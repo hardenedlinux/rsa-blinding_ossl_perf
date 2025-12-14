@@ -1,0 +1,31 @@
+diff --git a/apps/speed.c b/apps/speed.c
+index 059183ddc7..7576d96cd4 100644
+--- a/apps/speed.c
++++ b/apps/speed.c
+@@ -3267,6 +3267,8 @@ int speed_main(int argc, char **argv)
+             pkey_print_message("private", "rsa sign",
+                                rsa_keys[testnum].bits, seconds.rsa);
+             /* RSA_blinding_on(rsa_key[testnum],NULL); */
++	    //RSA *rsa_blinding = EVP_PKEY_get1_RSA (rsa_key);
++	    //RSA_blinding_off (rsa_blinding);
+             Time_F(START);
+             count = run_benchmark(async_jobs, RSA_sign_loop, loopargs);
+             d = Time_F(STOP);
+@@ -3327,6 +3329,8 @@ int speed_main(int argc, char **argv)
+             pkey_print_message("public", "rsa encrypt",
+                                rsa_keys[testnum].bits, seconds.rsa);
+             /* RSA_blinding_on(rsa_key[testnum],NULL); */
++	    //RSA *rsa_blinding = EVP_PKEY_get1_RSA (rsa_key);
++	    //RSA_blinding_off (rsa_blinding);
+             Time_F(START);
+             count = run_benchmark(async_jobs, RSA_encrypt_loop, loopargs);
+             d = Time_F(STOP);
+@@ -3359,6 +3363,8 @@ int speed_main(int argc, char **argv)
+             pkey_print_message("private", "rsa decrypt",
+                                rsa_keys[testnum].bits, seconds.rsa);
+             /* RSA_blinding_on(rsa_key[testnum],NULL); */
++	   // RSA *rsa_blinding = EVP_PKEY_get1_RSA (rsa_key);
++	   // RSA_blinding_off (rsa_blinding);
+             Time_F(START);
+             count = run_benchmark(async_jobs, RSA_decrypt_loop, loopargs);
+             d = Time_F(STOP);
